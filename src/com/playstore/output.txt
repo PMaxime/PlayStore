@@ -1,0 +1,50 @@
+//You don't need to write them in a file, just display them in console//
+
+Book War and Peace is added to playstore
+Book The great gatsby is added to playstore
+Book Introduction to algorithms is added to playstore
+Magazine Forbes is added to playstore
+
+Game Pokemon for Android is added to playstore
+Game Pokemon for iOS is added to playstore
+Game MineCraft for Android is added to playstore
+
+User John Doe has joined!
+User Jane Doe has joined!
+User Dave Roe has joined!
+User Diane Roe has joined!
+
+John Doe bought War and Peace
+John Doe bought Introduction to algorithms
+Diane Roe cannot buy Pokemon for Android due to OS mismatch
+John Doe bought Forbes magazine
+
+Diane Roe is cannot become premium user due to insuffiecient fund!
+Diane Roe bought Forbes magazine
+
+Jane Doe is now premium user!
+Jane Doe cannot buy Pokemon for iOS due to OS mismatch
+Jane Doe bought Pokemon for Android
+
+The contents bought by Jane Doe - Pokemon for Android
+
+The contents in the playstore are - Book War and Peace, Book The great gatsby, Book Introduction to algorithms, Magazine Forbes, Game Pokemon for Android, Game Pokemon for iOS, Game MineCraft for Android
+
+The novels in playstore are - Book War and Peace, Book The great gatsby
+
+//if a method is called to show all games
+// The games in playstore are - Game Pokemon for Android, Game Pokemon for iOS, Game MineCraft for Android
+
+John Doe added review "This is a fantastic game!" on Game Pokemon for Android
+Jane Doe replied "I never liked this game!"
+John Doe replied "Really?"
+Dave Roe added review "The game crashes frequently." on Game Pokemon for Android
+
+The reviews of Game Pokemon for Android - 
+John Doe (u1): This is a fantastic game!
+	Jane Joe (u2): I never liked this game!
+   		John Doe (u1): Really??
+David Roe (u3): The game crashes frequently.
+
+
+ 
