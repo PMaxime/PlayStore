@@ -1,5 +1,7 @@
 package com.playstore;
 
+import java.util.ArrayList;
+
 /* COSC2531 Programming Fundamentals, Sem 2, 2018
  *
     !!!!!!!!!!!!!!!
@@ -9,18 +11,57 @@ package com.playstore;
     This file will NOT compile unless you write all the required java classes, along with their attributes and the methods.
  */
 public class PlayStore {
-    //Student to do: Add the necessary attributes and methods
+
+    private ArrayList<Content> contents = new ArrayList<Content>();
 
     private void addContents(Book book) {
         System.out.printf("Book %s is added to playstore\n", book.getName());
+        contents.add(book);
     }
 
     private void addContents(Magazine magazine) {
         System.out.printf("Magazine %s is added to playstore\n", magazine.getName());
+        contents.add(magazine);
     }
 
     private void addContents(Game game) {
         System.out.printf("Game %s for %s is added to playstore\n", game.getName(), game.getOs().getType());
+        contents.add(game);
+    }
+
+    private void showAllContents() {
+        System.out.print("The contents in the playstore are - ");
+        for (int i = 0; i < contents.size(); ++i) {
+            System.out.print(contents.get(i).toString() + (i + 1 == contents.size() ? "\n" : ", "));
+        }
+    }
+
+    private void showReadingOfGenre(String genre) {
+        boolean firstPrint = true;
+        System.out.print("The " + genre.toLowerCase() + " in playstore are - ");
+        for (Content content : contents) {
+            // If the content is a book or a magazine and the genre match
+            if ((content.getType() == Content.Type.Book ||
+                    content.getType() == Content.Type.Magazine) &&
+                    ((Reading) content).getGenre().toLowerCase().equals(genre.toLowerCase())) {
+                System.out.print((firstPrint ? "" : ", ") + content.toString());
+                firstPrint = false;
+            }
+        }
+        System.out.println();
+    }
+
+    private void showAllContentsOfType(Content.Type type) {
+        boolean firstPrint = true;
+        System.out.print("The " + type.name().toLowerCase() + " in playstore are - ");
+        for (Content content : contents) {
+            // If the content type match the expected type, display
+            if (content.getType() == type) {
+                System.out.print((firstPrint ? "" : ", ") + content.toString());
+                firstPrint = false;
+            }
+        }
+        System.out.println();
     }
 
     private void addUsers(User user) {
@@ -93,29 +134,30 @@ public class PlayStore {
         System.out.println();
 
         //showing all contents in the PlayStore
-        /*admin.showAllContents();
+        admin.showAllContents();
         System.out.println();
 
 
         //showing all reading type of objects with the genre “Novel”
-        admin.showReadingOfGenre("Novel");*/
+        admin.showReadingOfGenre("Novel");
         System.out.println();
 
         //Student to do: call a method to show all games. What should be the parameters of that //method?   See Section 2, functionality 7
-
+        admin.showAllContentsOfType(Content.Type.Game);
+        System.out.println();
 
         Comment cmnt = new Comment(u1, "This is a fantastic game!");
-        /*g1.addReviews(cmnt);*/
+        g1.addReviews(cmnt);
         Comment r1 = new Comment(u2, "I never liked this game!");
-        /*cmnt.addReply(r1);*/
+        cmnt.addReply(r1);
         Comment r2 = new Comment(u1, "Really??");
-        /*r1.addReply(r2);*/
+        r1.addReply(r2);
 
         Comment cmnt2 = new Comment(u3, "The game crashes frequently.");
-        /*g1.addReviews(cmnt2);*/
+        g1.addReviews(cmnt2);
 
         //showing all reviews including the replies on object g1
-        /*g1.printAllReview();*/
+        g1.printAllReview();
 
 
     }

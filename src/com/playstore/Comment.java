@@ -1,36 +1,31 @@
 package com.playstore;
 
-public class Comment {
+import java.util.ArrayList;
+
+class Comment {
     private User user;
     private String content;
-    private Comment comment;
+    private ArrayList<Comment> replies;
     
     Comment(User user, String content) {
         this.user = user;
         this.content = content;
+        replies = new ArrayList<>();
     }
 
-    public User getUser() {
+    User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getContent() {
+    String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+    ArrayList<Comment> getReplies() { return replies; }
 
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
+    void addReply(Comment reply) {
+        // Jane Doe replied "I never liked this game!"
+        System.out.println(reply.getUser().getName() + " replied \"" + reply.getContent() + "\"");
+        replies.add(reply);
     }
 }

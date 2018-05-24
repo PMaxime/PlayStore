@@ -31,55 +31,15 @@ public class User {
         this.boughtContents = new ArrayList<>();
     }
 
-    public String getID() {
+    String getID() {
         return ID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    public OS getOs() {
-        return os;
-    }
-
-    public void setOs(OS os) {
-        this.os = os;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public void buyContent(Content content) {
+    void buyContent(Content content) {
         String output; 
         boolean shouldContinue = true;
         if (content.getClass().getName().equals("com.playstore.Game"))
@@ -98,7 +58,7 @@ public class User {
 
     }
     
-    public void becomePremium() {
+    void becomePremium() {
         String output;
         if (balance < 100) {
             output = String.format("%s cannot become premium user due to insufficient fund!", name);
@@ -111,7 +71,7 @@ public class User {
         System.out.println(output);
     }
     
-    public void showContentsBought() {
+    void showContentsBought() {
         StringBuilder output = new StringBuilder(String.format("The contents bought by %s - ", name));
         
         for (Content content : boughtContents) {
