@@ -31,6 +31,7 @@ public class PlayStore {
 
     private void showAllContents() {
         System.out.print("The contents in the playstore are - ");
+        // Loops over the ArrayList<Content>
         for (int i = 0; i < contents.size(); ++i) {
             System.out.print(contents.get(i).toString() + (i + 1 == contents.size() ? "\n" : ", "));
         }

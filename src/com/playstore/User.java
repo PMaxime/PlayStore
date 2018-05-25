@@ -17,7 +17,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.balance = 0;
         this.os = os;
-        this.discount = 0;
+        this.discount = 1;
         this.boughtContents = new ArrayList<>();
     }
 
@@ -27,7 +27,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.balance = balance;
         this.os = os;
-        this.discount = 0;
+        this.discount = 1;
         this.boughtContents = new ArrayList<>();
     }
 
@@ -42,16 +42,20 @@ public class User {
     void buyContent(Content content) {
         String output; 
         boolean shouldContinue = true;
+        // Checking OS match
         if (content.getClass().getName().equals("com.playstore.Game"))
             shouldContinue = checkOS((Game) content);
+        // Checking if user's balance is sufficient to buy
         if (shouldContinue)
             shouldContinue = checkPrice(content);
         if (shouldContinue) {
+            // Applying potential discount and removing object price from user's balance
             balance -= content.getPrice() * this.discount;
             if (content.getClass().getName().equals("com.playstore.Game"))
                 output = String.format("%s bought %s for %s", name, content.getName(), ((Game)content).getOs().getType());
             else
                 output = String.format("%s bought %s", name, content.getName());
+            // Adding item to user's bought list
             boughtContents.add(content);
             System.out.println(output);
         }
@@ -65,6 +69,7 @@ public class User {
         }
         else {
             output = String.format("%s is now premium user!", name);
+            // Removing price from user's balance and setting its discount (from 1 to 0.20)
             balance -= 100;
             discount = 0.20;
         }
@@ -73,7 +78,8 @@ public class User {
     
     void showContentsBought() {
         StringBuilder output = new StringBuilder(String.format("The contents bought by %s - ", name));
-        
+
+        // Loops over ArrayList of bought items
         for (Content content : boughtContents) {
             if (content.getClass().getName().equals("com.playstore.Game")) {
                 output.append(String.format("%s for %s", content.getName(), ((Game)content).getOs().getType()));
