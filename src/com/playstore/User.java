@@ -18,7 +18,7 @@ public class User {
         this.balance = 0;
         this.os = os;
         this.discount = 1;
-        this.boughtContents = new ArrayList<>();
+        this.boughtContents = new ArrayList<Content>();
     }
 
     User(String ID, String name, String phoneNumber, int balance, OS os) {
@@ -28,7 +28,7 @@ public class User {
         this.balance = balance;
         this.os = os;
         this.discount = 1;
-        this.boughtContents = new ArrayList<>();
+        this.boughtContents = new ArrayList<Content>();
     }
 
     String getID() {

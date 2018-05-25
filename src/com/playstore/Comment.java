@@ -10,7 +10,7 @@ class Comment {
     Comment(User user, String content) {
         this.user = user;
         this.content = content;
-        replies = new ArrayList<>();
+        replies = new ArrayList<Comment>();
     }
 
     User getUser() {

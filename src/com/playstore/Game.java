@@ -11,14 +11,14 @@ public class Game extends Content {
         super(Type.Game, ID, name);
         this.os = os;
         this.isMultiPlayer = isMultiPlayer;
-        reviews = new ArrayList<>();
+        reviews = new ArrayList<Comment>();
     }
 
     public Game(String ID, String name, int price, boolean isMultiPlayer, OS os) {
         super(Type.Game, ID, name, price);
         this.os = os;
         this.isMultiPlayer = isMultiPlayer;
-        reviews = new ArrayList<>();
+        reviews = new ArrayList<Comment>();
     }
 
     OS getOs() {
