@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class PlayStore {
 
     private ArrayList<Content> contents = new ArrayList<Content>();
+    private ArrayList<User> users = new ArrayList<User>();
 
     private void addContents(Book book) {
         System.out.printf("Book %s is added to playstore\n", book.getName());
@@ -66,6 +67,7 @@ public class PlayStore {
     }
 
     private void addUsers(User user) {
+        users.add(user);
         System.out.printf("User %s has joined!\n", user.getName());
     }
 

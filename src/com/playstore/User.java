@@ -43,11 +43,21 @@ public class User {
         String output; 
         boolean shouldContinue = true;
         // Checking OS match
-        if (content.getClass().getName().equals("com.playstore.Game"))
-            shouldContinue = checkOS((Game) content);
+        if (content.getClass().getName().equals("com.playstore.Game")) {
+            try {
+                shouldContinue = checkOS((Game) content);
+            } catch (IllegalArgumentException ex) {
+                shouldContinue = false;
+            }
+        }
         // Checking if user's balance is sufficient to buy
-        if (shouldContinue)
-            shouldContinue = checkPrice(content);
+        if (shouldContinue) {
+            try {
+                shouldContinue = checkPrice(content);
+            } catch (IllegalArgumentException ex) {
+                shouldContinue = false;
+            }
+        }
         if (shouldContinue) {
             // Applying potential discount and removing object price from user's balance
             balance -= content.getPrice() * this.discount;
@@ -96,7 +106,7 @@ public class User {
         if (balance < content.getPrice() * discount) {
             output = String.format("%s cannot buy %s due to insuffiecient fund!", name, content.getName());
             System.out.println(output);
-            return false; //TODO: Throw exception
+            throw new IllegalArgumentException();
         }
         return true;
     }
@@ -106,13 +116,13 @@ public class User {
         if (!game.getOs().getType().equals(os.getType())) {
             output = String.format("%s cannot buy %s for %s due to OS mismatch", name, game.getName(), game.getOs().getType());
             System.out.println(output);
-            return false; //TODO: Throw exception
+            throw new IllegalArgumentException();
         }
 
         if (game.getOs().getVersion() > os.getVersion()) {
             output = String.format("%s cannot buy %s for %s due to OS mismatch", name, game.getName(), game.getOs().getType());
             System.out.println(output);
-            return false; //TODO: Throw exception
+            throw new IllegalArgumentException();
         }
 
         return true;
